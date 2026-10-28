@@ -11,8 +11,10 @@ const CONFIG = {
 
   // Materiais
   CHECKOUT_NUTRIEXPRESS: "https://pay.kiwify.com.br/ofIKz0k", // link do checkout do NutriExpress
-  CHECKOUT_SUS: "https://pay.kiwify.com.br/ya8JYEI",          // link do checkout do SUS Descomplicado
-  PRECO_NUTRIEXPRESS: "157,00",
+  CHECKOUT_SUS: "https://pay.kiwify.com.br/ya8JYEI",
+  CHECKOUT_TRANSPETRO: "https://pay.kiwify.com.br/kiOu78t",  // link do checkout do Transpetro Nutri
+  PRECO_NUTRIEXPRESS: "97,90",
+  PRECO_TRANSPETRO: "157,90",
   PRECO_SUS: "37,90",
 };
 
@@ -23,7 +25,7 @@ const CONFIG = {
 
   // links de checkout
   d.querySelectorAll("[data-checkout]").forEach((a) => {
-    const chave = a.dataset.checkout === "nutriexpress" ? "CHECKOUT_NUTRIEXPRESS" : "CHECKOUT_SUS";
+    const chave = "CHECKOUT_" + a.dataset.checkout.toUpperCase();
     if (CONFIG[chave]) { a.href = CONFIG[chave]; a.rel = "noopener"; }
     else {
       a.href = "#oferta";
@@ -33,7 +35,7 @@ const CONFIG = {
 
   // preços
   d.querySelectorAll("[data-preco]").forEach((el) => {
-    const v = CONFIG[el.dataset.preco === "nutriexpress" ? "PRECO_NUTRIEXPRESS" : "PRECO_SUS"];
+    const v = CONFIG["PRECO_" + el.dataset.preco.toUpperCase()];
     const [reais, cent] = v.split(",");
     el.innerHTML = `<sup>R$</sup>${reais}<small>,${cent || "00"}</small>`;
   });

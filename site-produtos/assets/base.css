@@ -229,7 +229,7 @@ details.acc .acc-body li::before { content: ""; position: absolute; left: 2px; t
 /* autoridade */
 .authority { display: grid; gap: 28px; align-items: center; }
 .authority .ph { aspect-ratio: 4 / 5; max-width: 360px; }
-.authority-photo { aspect-ratio: 723 / 1000; max-width: 360px; overflow: hidden; border-radius: 14px; margin: 0; }
+.authority-photo { aspect-ratio: 789 / 1095; max-width: 360px; overflow: hidden; border-radius: 14px; margin: 0; background: var(--ink); }
 .authority-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (min-width: 760px) { .authority { grid-template-columns: 0.7fr 1.3fr; gap: 56px; } }
 

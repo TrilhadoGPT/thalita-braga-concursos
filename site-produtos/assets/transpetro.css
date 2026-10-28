@@ -1,0 +1,75 @@
+/* Transpetro Nutri: versão clara e limpa sobre o sistema base.
+   O fundo claro conduz a leitura; o escuro fica só no cartão de preço e no rodapé. */
+.tp { --accent: var(--green); }
+
+/* hero claro, com a foto apoiada no painel verde */
+.tp .hero { background: var(--paper); color: var(--ink); }
+.tp .hero-copy .lead,
+.tp .hero-note { color: var(--muted); }
+.tp .hero mark.hl { color: inherit; text-decoration: underline; text-decoration-color: var(--lime); text-decoration-thickness: 0.16em; text-underline-offset: 0.05em; text-decoration-skip-ink: none; }
+.tp .hero-photo::before { background: var(--green); }
+
+/* botões: tinta escura com texto lima, verde no hover */
+.tp .btn { background: var(--ink); color: var(--lime); box-shadow: 0 14px 28px -16px rgba(11, 31, 23, 0.6); }
+.tp .btn:hover { background: var(--green); color: var(--white); }
+.tp .price-box .btn,
+.tp .stick .btn { background: var(--lime); color: var(--ink); }
+.tp .price-box .btn:hover,
+.tp .stick .btn:hover { background: var(--white); color: var(--ink); }
+
+.tp .depo-card { background: var(--paper); }
+.tp .sec--white .depo-card { background: var(--paper); }
+
+/* oferta: lista clara à esquerda, cartão escuro de preço à direita */
+.tp .tp-offer { background: var(--white); color: var(--ink); }
+.tp .tp-offer--paper { background: var(--paper); }
+.tp .tp-offer .offer-list li { border-color: var(--line); }
+.tp .tp-offer .offer-list b { color: var(--ink); }
+.tp .tp-offer .offer-list span { color: var(--muted); }
+.tp .price-box { background: var(--ink); color: var(--on-dark); box-shadow: 0 30px 50px -30px rgba(11, 31, 23, 0.55); }
+.tp .price-box .from,
+.tp .price-box .safe { color: var(--on-dark-muted); }
+.tp .price-box .safe svg { color: var(--lime); }
+.tp .price sup { color: var(--lime); }
+
+/* custo do problema + garantia */
+.tp .tp-cost { background: var(--paper); color: var(--ink); }
+.tp .guarantee { background: var(--white); border-color: var(--line); }
+.tp .guarantee svg { color: var(--green); }
+
+/* seleção e foco seguem a paleta */
+.tp ::selection { background: var(--lime); color: var(--ink); }
+
+/* ---------- v2: topo com checklist e blocos com barras ---------- */
+.tp-hero-grid { display: grid; gap: 40px; align-items: center; padding-bottom: clamp(40px, 7vw, 72px); }
+.tp-hero .hero-copy { padding-bottom: 0; }
+.tp-visual { position: relative; width: min(100%, 440px); justify-self: center; }
+.tp-photo { aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--green); margin: 0; }
+.tp-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.tp-check {
+  max-width: 340px; margin-top: 28px; padding: 18px 18px 14px; background: var(--white);
+  border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 22px 36px -22px rgba(11, 31, 23, 0.45);
+}
+.tp-check-t { font: 800 1.25rem/1 var(--display); text-transform: uppercase; }
+.tp-check-s { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.tp-check ul { margin-top: 10px; }
+.tp-check li { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; align-items: center; padding-block: 7px; border-top: 1px solid var(--line); font-size: 0.85rem; line-height: 1.25; }
+.tp-check li i { width: 12px; height: 12px; border-radius: 50%; }
+.tp-check li em { font-style: normal; font-weight: 600; font-size: 0.75rem; color: var(--muted); }
+.tp-check .s-ok i { background: var(--green); }
+.tp-check .s-mid i { background: var(--amber); }
+.tp-check .s-low i { background: #d1493f; }
+@media (min-width: 880px) {
+  .tp-hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
+  .tp-visual { justify-self: end; }
+}
+
+.tp-inside { display: grid; gap: 48px; }
+.tp-blocks li { padding-block: 18px; border-top: 1px solid var(--line); }
+.tp-blocks li:last-child { border-bottom: 1px solid var(--line); }
+.tp-blocks p { margin-top: 6px; color: var(--muted); max-width: 60ch; text-wrap: pretty; }
+.tp-anatomy h3 { margin-bottom: 14px; }
+.tp-anatomy li { padding: 12px 0 12px 22px; border-top: 1px solid var(--line); position: relative; font-weight: 500; }
+.tp-anatomy li:last-child { border-bottom: 1px solid var(--line); }
+.tp-anatomy li::before { content: ""; position: absolute; left: 2px; top: 1.15em; width: 8px; height: 8px; border-radius: 2px; background: var(--lime); outline: 1.5px solid var(--green); }
+@media (min-width: 880px) { .tp-inside { grid-template-columns: 1.5fr 0.8fr; gap: 72px; align-items: start; } .tp-anatomy { position: sticky; top: 32px; } }
