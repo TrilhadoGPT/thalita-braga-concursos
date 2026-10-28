@@ -28,7 +28,7 @@
     <div class="tp-hero-grid">
       <div class="hero-copy">
         <h1 class="h-display rise" style="--i:0">Revise o edital da Transpetro <mark class="hl">bloco a bloco</mark>, no padrão da Cesgranrio.</h1>
-        <p class="lead rise" style="--i:1">O Transpetro Nutri 2026 reúne resumos estratégicos, questões comentadas e revisão de 5 minutos dos 7 blocos do edital de Nutricionista. A prova é em 21/11.</p>
+        <p class="lead rise" style="--i:1">O Transpetro Nutri 2026 reúne resumos estratégicos, questões comentadas e revisão de 5 minutos dos 7 blocos do edital de Nutricionista. A prova é em 06/12.</p>
         <a class="btn rise" style="--i:2" data-checkout="transpetro" href="#oferta">Quero o Transpetro Nutri 2026 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <p class="hero-note rise" style="--i:3">7 blocos do edital · 6 bônus</p>
       </div>
@@ -173,7 +173,7 @@
 <!-- DOBRA 10 — CUSTO DO PROBLEMA -->
 <section class="sec tp-cost" aria-labelledby="d10">
   <div class="wrap cost">
-    <h2 id="d10" class="turn reveal"><span data-dias>A prova é em 21/11.</span> Cada dia sem plano é um dia a menos de revisão.</h2>
+    <h2 id="d10" class="turn reveal"><span data-dias>A prova é em 06/12.</span> Cada dia sem plano é um dia a menos de revisão.</h2>
     <div class="reveal">
       <p class="prose" style="color:var(--muted)">Quem estuda para concurso e trabalha tem poucas horas. Gastar essas horas decidindo o que ler e procurando material custa o que você mais precisa: tempo para revisar e treinar com questões.</p>
     </div>
@@ -214,7 +214,7 @@
   <div class="wrap">
     <div class="sec-head"><h2 id="faq" class="h-display">Perguntas frequentes</h2></div>
     <div class="faq">
-      <details class="acc"><summary>É para qual concurso?</summary><div class="acc-body">Para o concurso da Transpetro, cargo de Nutricionista (Ênfase 29 – Nutrição), banca Cesgranrio. O conteúdo segue os 7 blocos do edital. A prova está marcada para 21/11/2026.</div></details>
+      <details class="acc"><summary>É para qual concurso?</summary><div class="acc-body">Para o concurso da Transpetro, cargo de Nutricionista (Ênfase 29 – Nutrição), banca Cesgranrio. O conteúdo segue os 7 blocos do edital. A prova está marcada para 06/12/2026.</div></details>
       <details class="acc"><summary>São aulas em vídeo?</summary><div class="acc-body">Não. É material de estudo em PDF: resumos, mapas mentais, atlas visuais, checklists e questões comentadas.</div></details>
       <details class="acc"><summary>Como recebo o acesso?</summary><div class="acc-body">Depois da confirmação do pagamento, você recebe o acesso ao material.</div></details>
       <details class="acc"><summary>O material substitui o edital?</summary><div class="acc-body">Não. Ele organiza a revisão, mas o edital continua sendo o guia do que estudar. As provas anteriores treinam o olhar para a banca e não definem o que será cobrado: confira sempre o edital e as normas vigentes.</div></details>
@@ -233,13 +233,13 @@
 <div class="stick"><a class="btn" data-checkout="transpetro" href="#oferta">Quero o Transpetro Nutri 2026 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
 <script src="assets/app.js"></script>
 <script>
-  /* dias até a prova (21/11/2026), no horário de São Paulo */
+  /* dias até a prova (06/12/2026), no horário de São Paulo */
   (() => {
     const el = document.querySelector("[data-dias]");
     if (!el) return;
     const sp = new Date(Date.now() - 3 * 3600e3);
     const hoje = Date.UTC(sp.getUTCFullYear(), sp.getUTCMonth(), sp.getUTCDate());
-    const d = Math.round((Date.UTC(2026, 10, 21) - hoje) / 86400000);
+    const d = Math.round((Date.UTC(2026, 11, 6) - hoje) / 86400000);
     if (d > 1) el.textContent = "Faltam " + d + " dias para a prova.";
     else if (d === 1) el.textContent = "A prova é amanhã.";
     else if (d === 0) el.textContent = "A prova é hoje.";
