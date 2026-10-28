@@ -3,7 +3,7 @@
 const CONFIG = {
   // Aulas ao vivo
   GRUPO_URL: "https://chat.whatsapp.com/IQTNNPmhDBM5peLOrhhs4X",            // link do grupo (ex.: https://chat.whatsapp.com/XXXX). Vazio = modo rascunho
-  WEBHOOK_URL: "https://gancho.trilhadogpt.com/webhook/4b39b515-3f92-4474-b366-01a55e99849f",          // opcional: endpoint que recebe {nome, email, telefone} (Make, Zapier, Apps Script...)
+  WEBHOOK_URL: "https://gancho.trilhadogpt.com/webhook/4b39b515-3f92-4474-b366-01a55e99849f", // recebe {email, origem, em}; sem nome ou telefone
   LIVE_DIA: 1,              // dia da semana das lives (0=dom ... 1=segunda ... 6=sáb)
   LIVE_HORA: 19,            // horário de início, horário de São Paulo (GMT-3)
   LIVE_QTD: 3,              // quantas datas aparecem na lista
@@ -84,38 +84,32 @@ const CONFIG = {
   if (form) {
     if (!CONFIG.GRUPO_URL) faltando.push("GRUPO_URL");
     if (!CONFIG.WEBHOOK_URL) faltando.push("WEBHOOK_URL");
-    const campos = {
-      nome: form.elements.nome, email: form.elements.email, telefone: form.elements.telefone,
-    };
+    const campos = { email: form.elements.email };
     const erro = (el, msg) => {
       const alvo = d.getElementById(el.id + "-erro");
       alvo.textContent = msg || "";
       el.setAttribute("aria-invalid", msg ? "true" : "false");
       return !msg;
     };
-    campos.telefone.addEventListener("input", () => {
-      const n = campos.telefone.value.replace(/\D/g, "").slice(0, 11);
-      campos.telefone.value = n.length > 6
-        ? `(${n.slice(0, 2)}) ${n.slice(2, n.length > 10 ? 7 : 6)}-${n.slice(n.length > 10 ? 7 : 6)}`
-        : n.length > 2 ? `(${n.slice(0, 2)}) ${n.slice(2)}` : n;
-    });
     const valida = {
-      nome: () => erro(campos.nome, campos.nome.value.trim().split(/\s+/).length < 2 ? "Digite nome e sobrenome." : ""),
-      email: () => erro(campos.email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(campos.email.value.trim()) ? "" : "Digite um e-mail válido."),
-      telefone: () => erro(campos.telefone, campos.telefone.value.replace(/\D/g, "").length >= 10 ? "" : "Digite o DDD e o número."),
+      email: () => {
+        const email = campos.email.value.trim();
+        const arroba = email.indexOf("@");
+        const ponto = email.lastIndexOf(".");
+        return erro(campos.email, arroba > 0 && ponto > arroba + 1 && ponto < email.length - 1 ? "" : "Digite um e-mail válido.");
+      },
     };
     Object.keys(valida).forEach((k) => campos[k].addEventListener("blur", valida[k]));
 
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      const ok = [valida.nome(), valida.email(), valida.telefone()].every(Boolean);
+      const ok = valida.email();
       if (!ok) { form.querySelector("[aria-invalid=true]")?.focus(); return; }
       const btn = form.querySelector("button[type=submit]");
       const rotulo = btn.querySelector("span");
       btn.disabled = true; rotulo.textContent = "Enviando...";
       const dados = {
-        nome: campos.nome.value.trim(), email: campos.email.value.trim(),
-        telefone: campos.telefone.value.replace(/\D/g, ""), origem: "aulas-ao-vivo", em: new Date().toISOString(),
+        email: campos.email.value.trim(), origem: "aulas-ao-vivo", em: new Date().toISOString(),
       };
       if (CONFIG.WEBHOOK_URL) {
         try {

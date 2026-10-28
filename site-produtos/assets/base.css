@@ -120,8 +120,12 @@ mark.hl { background: none; color: inherit; text-decoration: underline; text-dec
 
 /* depoimentos */
 .depo-grid { display: grid; gap: 16px; }
-.depo-grid .ph { min-height: 220px; }
-@media (min-width: 720px) { .depo-grid { grid-template-columns: repeat(3, 1fr); } }
+.depo-card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+  padding: clamp(20px, 3vw, 28px); display: flex; align-items: flex-start;
+}
+.depo-card blockquote { color: var(--ink); font-size: 0.95rem; line-height: 1.65; }
+@media (min-width: 720px) { .depo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 /* vozes */
 .voices { display: grid; gap: 0; }
