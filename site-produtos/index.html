@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentor Nutri | Preparação para concursos de Nutrição</title>
+<meta name="description" content="Lives gratuitas, NutriExpress e SUS Descomplicado: o material da Mentor Nutri para estudar para concursos de Nutrição.">
+<meta name="theme-color" content="#f6f7f2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+<style>
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+  .page { width: 100%; max-width: 560px; margin-inline: auto; padding: clamp(28px, 6vw, 56px) var(--gutter) 40px; flex: 1; }
+
+  .id { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; margin-bottom: clamp(28px, 6vw, 44px); }
+  .avatar { position: relative; width: 92px; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #16402f; outline: 3px solid var(--lime); outline-offset: 3px; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .id h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+  .id p { margin-top: 6px; color: var(--muted); font-size: 0.95rem; line-height: 1.4; max-width: 34ch; }
+
+  .links { display: grid; gap: 14px; }
+  .tile {
+    position: relative; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: center;
+    padding: 22px 20px 22px 22px; border-radius: 22px; text-decoration: none; overflow: hidden;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    box-shadow: 0 16px 30px -22px rgba(11, 31, 23, 0.6);
+  }
+  .tile:hover { transform: translateY(-3px); box-shadow: 0 24px 36px -22px rgba(11, 31, 23, 0.7); }
+  .tile:active { transform: translateY(0); }
+  .tile .tag { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 8px; font: 700 0.72rem/1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+  .tile h2 { font: 800 clamp(2rem, 8.4vw, 2.6rem)/0.95 var(--display); text-transform: uppercase; }
+  .tile p { font-size: 0.95rem; line-height: 1.45; margin-top: 8px; max-width: 36ch; }
+  .tile .go { grid-row: 2 / span 1; grid-column: 2; align-self: center; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; transition: transform 0.4s var(--ease); }
+  .tile:hover .go { transform: translateX(4px); }
+  .tile .go svg { width: 24px; height: 24px; }
+  .tile .body { grid-column: 1; grid-row: 2; }
+
+  .t-live { background: var(--lime); color: var(--ink); }
+  .t-live .tag { background: var(--ink); color: var(--lime); }
+  .t-live .go { background: var(--ink); color: var(--lime); }
+  .t-live .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+
+  .t-nx { background: var(--ink); color: var(--on-dark); }
+  .t-nx .tag { background: rgba(198, 241, 53, 0.14); color: var(--lime); }
+  .t-nx p { color: var(--on-dark-muted); }
+  .t-nx .go { background: var(--lime); color: var(--ink); }
+
+  .t-sus { background: var(--white); color: var(--ink); border: 1.5px solid var(--ink); box-shadow: none; }
+  .t-sus:hover { box-shadow: 0 24px 36px -26px rgba(11, 31, 23, 0.7); }
+  .t-sus .tag { background: var(--amber); color: var(--ink); }
+  .t-sus p { color: var(--muted); }
+  .t-sus .go { background: var(--amber); color: var(--ink); }
+
+  .foot-mini { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 0 var(--gutter) 32px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="id rise" style="--i:0">
+    <div class="avatar" aria-hidden="true"><img src="assets/thalita-avatar.png" alt="" width="150" height="150"></div>
+    <div>
+      <h1 class="h-display">THALITA BRAGA</h1>
+      <p>Preparação para concursos de Nutrição, com Thalita Braga e Sandra Magalhães.</p>
+    </div>
+  </header>
+
+  <nav class="links" aria-label="Produtos da Mentor Nutri">
+    <a class="tile t-live rise" style="--i:1" href="aulas-ao-vivo.html">
+      <span class="tag"><i class="dot"></i>Grupo gratuito</span>
+      <span class="body">
+        <h2>Aulas ao vivo</h2>
+        <p>Toda segunda, às 19h, com a Thalita. Cadastre-se e entre no grupo.</p>
+      </span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile t-nx rise" style="--i:2" href="nutriexpress.html">
+      <span class="tag">Material de estudos</span>
+      <span class="body">
+        <h2>NutriExpress</h2>
+        <p>Resumos, mapas mentais e PDFs de 24 módulos de Nutrição, organizados por assunto do edital.</p>
+      </span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="tile t-sus rise" style="--i:3" href="sus-descomplicado.html">
+      <span class="tag">Material de estudos</span>
+      <span class="body">
+        <h2>SUS Descomplicado</h2>
+        <p>Legislação do SUS esquematizada, questões comentadas e bônus de revisão.</p>
+      </span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </nav>
+</main>
+<p class="foot-mini">© Mentor Nutri. Material independente de apoio aos estudos, sem vínculo com bancas ou órgãos.</p>
+<script src="assets/app.js"></script>
+</body>
+</html>
