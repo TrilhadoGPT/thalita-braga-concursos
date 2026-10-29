@@ -18,7 +18,7 @@ const CONFIG = {
   PRECO_SUS: "37,90",
 
   // Combo NutriExpress + SUS + Aulão (oferta de um dia, 29/10/2026)
-  CHECKOUT_COMBO: "",       // link da oferta do combo na Kiwify (ainda não existe). Vazio = modo rascunho
+  CHECKOUT_COMBO: "https://pay.kiwify.com.br/2BpeYjJ", // oferta do combo na Kiwify (R$ 97,00)
   PRECO_COMBO: "97,00",
   COMBO_FIM: "2026-10-30T02:59:00Z", // 23:59 de 29/10/2026 em São Paulo (GMT-3). Só vale se o checkout sair do ar nesse horário
 };
