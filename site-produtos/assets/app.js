@@ -17,10 +17,10 @@ const CONFIG = {
   PRECO_TRANSPETRO: "157,90",
   PRECO_SUS: "37,90",
 
-  // Combo NutriExpress + SUS + Aulão (oferta de um dia, 29/10/2026)
+  // Combo NutriExpress + SUS + Aulão (oferta válida até 30/10/2026 ao meio-dia)
   CHECKOUT_COMBO: "https://pay.kiwify.com.br/2BpeYjJ", // oferta do combo na Kiwify (R$ 97,00)
   PRECO_COMBO: "97,00",
-  COMBO_FIM: "2026-10-30T02:59:00Z", // 23:59 de 29/10/2026 em São Paulo (GMT-3). Só vale se o checkout sair do ar nesse horário
+  COMBO_FIM: "2026-10-30T15:00:00Z", // 12:00 de 30/10/2026 em São Paulo (GMT-3). Só vale se o checkout sair do ar nesse horário
 };
 
 (() => {
@@ -32,7 +32,7 @@ const CONFIG = {
   const comboEncerrado = !!CONFIG.COMBO_FIM && Date.now() > Date.parse(CONFIG.COMBO_FIM);
   if (comboEncerrado) {
     d.querySelectorAll("[data-prazo]").forEach((el) => { el.hidden = true; });
-    d.querySelectorAll("[data-prazo-faq]").forEach((el) => { el.textContent = "A oferta de R$ 97 foi encerrada em 29/10/2026."; });
+    d.querySelectorAll("[data-prazo-faq]").forEach((el) => { el.textContent = "A oferta de R$ 97 foi encerrada em 30/10/2026."; });
     d.querySelectorAll('[data-checkout="combo"]').forEach((a) => {
       a.dataset.checkout = "nutriexpress";
       a.innerHTML = 'Oferta encerrada. Ver o NutriExpress <svg aria-hidden="true"><use href="#i-arrow"/></svg>';

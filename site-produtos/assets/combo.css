@@ -116,7 +116,7 @@ mark.hl{background:linear-gradient(180deg,transparent 8%,var(--lime) 8% 92%,tran
 .slip::before{content:"“";position:absolute;top:-22px;left:18px;font-family:var(--f-display);font-weight:800;font-size:4.6rem;line-height:1;color:var(--ink);background:var(--lime);width:48px;height:48px;display:grid;place-items:center;border:2px solid var(--ink);border-radius:12px;padding-top:20px}
 .s-a{grid-row:span 2;transform:rotate(-.5deg)}.s-b{transform:rotate(.7deg)}.s-c{transform:rotate(-.9deg);margin-left:24px;background:var(--lime)}
 .s-c::before{background:var(--white)}
-.strip{margin-top:46px;display:inline-block;background:var(--ink);color:var(--lime);padding:12px 20px 10px;border-radius:8px;font-size:clamp(.9rem,2.2vw,1.2rem);transform:rotate(-1.2deg);box-shadow:4px 4px 0 var(--lime);letter-spacing:.02em}
+.strip{margin-top:46px;display:inline-block;background:var(--ink);color:var(--lime);padding:12px 20px 10px;border-radius:8px;font-size:clamp(.9rem,2.2vw,1.2rem);transform:rotate(-1.2deg);box-shadow:4px 4px 0 var(--lime);letter-spacing:.02em;font-family:var(--f-body);font-weight:400}
 
 /* ---------- DOBRA 3: vozes ---------- */
 .voices{display:grid;grid-template-columns:repeat(6,1fr);gap:20px 22px}
