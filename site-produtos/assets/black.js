@@ -1,6 +1,6 @@
 /* Black Nutri: checkout e encerramento da oferta de hoje. */
 const CONFIG = {
-  CHECKOUT_BLACK: "https://pay.kiwify.com.br/onjo2mg",// link da oferta Black Nutri na Kiwify (R$ 197,00). Vazio = modo rascunho
+  CHECKOUT_BLACK: "https://pay.kiwify.com.br/onjo2mg",// link da oferta Black Nutri na Kiwify (R$ 157,90). Vazio = modo rascunho
   BLACK_FIM: "2026-11-07T02:59:59Z",  // 23:59:59 de 06/11/2026 em São Paulo (GMT-3). Troque a data se o prazo for outro. Só vale se o checkout sair do ar nesse horário
 };
 
