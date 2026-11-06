@@ -124,6 +124,7 @@ const CONFIG = {
       ev.preventDefault();
       const ok = valida.email();
       if (!ok) { form.querySelector("[aria-invalid=true]")?.focus(); return; }
+      if (window.mnTrack) window.mnTrack.lead();
       const btn = form.querySelector("button[type=submit]");
       const rotulo = btn.querySelector("span");
       btn.disabled = true; rotulo.textContent = "Enviando...";
