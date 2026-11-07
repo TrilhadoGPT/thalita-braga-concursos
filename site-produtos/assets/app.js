@@ -16,6 +16,8 @@ const CONFIG = {
   PRECO_NUTRIEXPRESS: "97,90",
   PRECO_TRANSPETRO: "157,90",
   PRECO_SUS: "37,90",
+  CHECKOUT_PORTUGUES: "https://pay.kiwify.com.br/YeljzNO", // checkout do Português na Kiwify
+  PRECO_PORTUGUES: "29,90",
 
   // Combo NutriExpress + SUS + Aulão (oferta válida até 30/10/2026 ao meio-dia)
   CHECKOUT_COMBO: "https://pay.kiwify.com.br/2BpeYjJ", // oferta do combo na Kiwify (R$ 97,00)

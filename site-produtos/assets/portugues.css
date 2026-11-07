@@ -1,0 +1,59 @@
+/* Mentor Nutri — página de Português. Herda o sistema de base.css; aqui só o que é desta página. */
+
+/* hero claro: a página é limpa, o escuro fica para a causa e a oferta */
+.hero--light { background: var(--paper); color: var(--ink); }
+.hero--light .brandmark { color: var(--ink); }
+.hero--light .hero-grid { align-items: start; gap: clamp(28px, 5vw, 56px); }
+.hero--light .hero-copy { padding-bottom: 0; }
+.hero--light h1.h-display { font-size: clamp(2.5rem, 8.2vw, 4.7rem); }
+.hero--light .hero-copy .lead { color: var(--muted); }
+.hero--light .hero-note { color: var(--muted); }
+.hero--light mark.hl {
+  background: linear-gradient(transparent 60%, var(--lime) 60% 94%, transparent 94%);
+  text-decoration: none; padding-inline: 0.06em; margin-inline: -0.06em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+@media (min-width: 880px) {
+  .hero--light .hero-grid { grid-template-columns: 1.08fr 0.92fr; }
+  .hero--light .hero-copy { padding-top: clamp(8px, 3vw, 40px); }
+}
+.hero--light { padding-bottom: clamp(40px, 7vw, 80px); }
+
+/* sumário dos 12 módulos: mostra o produto inteiro e o que já está pronto */
+.index {
+  background: var(--white); border: 1px solid var(--line); border-radius: 22px;
+  padding: clamp(18px, 3.2vw, 28px) clamp(18px, 3.2vw, 28px) clamp(8px, 1.6vw, 14px);
+  box-shadow: 0 30px 50px -38px rgba(11, 31, 23, 0.5);
+}
+.index h2 { font: 800 clamp(1.5rem, 4vw, 1.9rem)/1 var(--display); text-transform: uppercase; margin-bottom: 8px; }
+.index ol { counter-reset: none; }
+.index li {
+  display: grid; grid-template-columns: 2rem 1fr; align-items: center; gap: 4px 12px;
+  padding-block: 11px; border-top: 1px solid var(--line);
+  animation: rise 0.8s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 60ms + 260ms);
+}
+.index .n { font: 700 1.05rem/1 var(--display); color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.index .t { font-weight: 600; font-size: 0.97rem; line-height: 1.25; text-wrap: balance; }
+@media (max-width: 480px) {
+  .index li { grid-template-columns: 1.7rem 1fr; gap: 4px 10px; padding-block: 10px; }
+}
+
+/* módulos disponíveis (dobra 6) */
+.modules .acc-body .ex { color: var(--ink); font-weight: 600; }
+.modules .acc-body .ex::before { background: var(--lime); outline: 1.5px solid var(--green); }
+
+/* módulos 8 a 12: listados sem detalhe, no mesmo ritmo dos acordeões */
+.modules .more { border-top: 1px solid var(--line); }
+.modules .more li {
+  display: grid; grid-template-columns: 2.4rem 1fr; align-items: center; padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+  font: 700 clamp(1.3rem, 3.4vw, 1.7rem)/1.1 var(--display); text-transform: uppercase;
+}
+.modules .more .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* oferta: respiro extra entre a lista e o preço no mobile */
+.price-box .btn { font-size: 1.25rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .index li { animation: none; }
+}

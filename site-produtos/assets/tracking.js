@@ -1,57 +1,76 @@
-/* Mentor Nutri — eventos de rastreamento (GTM-WM3X2795 / Pixel da Meta via GTM).
-   Este arquivo só empurra eventos para o dataLayer; as tags ficam no GTM.
-   Não envia e-mail, telefone nem qualquer dado pessoal. */
+/* Mentor Nutri — eventos do funil no GTM e registro seguro de cliques no checkout. */
 (() => {
   const dl = (window.dataLayer = window.dataLayer || []);
 
-  // Produtos rastreados. A chave é o nome da página (sem .html). O valor vem do CONFIG do site quando existir;
-  // o "valor" abaixo é só o reserva (Black Nutri não tem preço no CONFIG).
   const PRODUTOS = {
-    "black": { id: "black-nutri", nome: "Black Nutri", chave: "BLACK", valor: 157.9 },
-    "transpetro": { id: "transpetro-nutri", nome: "Transpetro Nutri", chave: "TRANSPETRO", valor: 157.9 },
-    "nutriexpress": { id: "nutriexpress", nome: "NutriExpress", chave: "NUTRIEXPRESS", valor: 97.9 },
+    black: { id: "black-nutri", nome: "Black Nutri", chave: "BLACK", valor: 157.9 },
+    transpetro: { id: "transpetro-nutri", nome: "Transpetro Nutri", chave: "TRANSPETRO", valor: 157.9 },
+    nutriexpress: { id: "nutriexpress", nome: "NutriExpress", chave: "NUTRIEXPRESS", valor: 97.9 },
     "sus-descomplicado": { id: "sus-descomplicado", nome: "SUS Descomplicado", chave: "SUS", valor: 37.9 },
+    portugues: { id: "portugues-concursos", nome: "Português para concursos", chave: "PORTUGUES", valor: 29.9 },
   };
-  // valor do atributo data-checkout -> página/produto
-  const POR_CHECKOUT = { sus: "sus-descomplicado", nutriexpress: "nutriexpress", transpetro: "transpetro", black: "black" };
+  const POR_CHECKOUT = {
+    sus: "sus-descomplicado",
+    nutriexpress: "nutriexpress",
+    transpetro: "transpetro",
+    black: "black",
+    portugues: "portugues",
+  };
 
   const pagina = location.pathname.replace(/\/+$/, "").split("/").pop().replace(/\.html$/, "");
   const eventId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
-  const valorDe = (p) => {
+  const valorDe = (produto) => {
     try {
-      // CONFIG é uma const global criada em app.js/black.js (não fica em window)
-      const txt = typeof CONFIG !== "undefined" ? CONFIG["PRECO_" + p.chave] : null;
-      if (txt) { const n = parseFloat(String(txt).replace(/\./g, "").replace(",", ".")); if (n > 0) return n; }
-    } catch (_) { /* usa o valor reserva */ }
-    return p.valor;
+      const texto = typeof CONFIG !== "undefined" ? CONFIG["PRECO_" + produto.chave] : null;
+      if (texto) {
+        const valor = parseFloat(String(texto).replace(/\./g, "").replace(",", "."));
+        if (valor > 0) return valor;
+      }
+    } catch (_) { /* usa o valor de reserva */ }
+    return produto.valor;
   };
 
-  const dadosProduto = (p) => ({
-    content_name: p.nome,
-    content_id: p.id,
+  const dadosProduto = (produto) => ({
+    content_name: produto.nome,
+    content_id: produto.id,
     content_type: "product",
-    value: valorDe(p),
+    value: valorDe(produto),
     currency: "BRL",
   });
 
-  // 1) ViewContent: ao abrir a página de um produto
   const produtoDaPagina = PRODUTOS[pagina];
   if (produtoDaPagina) {
     dl.push(Object.assign({ event: "view_content", event_id: eventId() }, dadosProduto(produtoDaPagina)));
   }
 
-  // 2) InitiateCheckout: clique em qualquer botão de checkout (só quando o link já aponta para a Kiwify)
-  document.addEventListener("click", (ev) => {
-    const a = ev.target.closest && ev.target.closest("[data-checkout]");
-    if (!a || !/kiwify/i.test(a.href || "")) return;
-    const chave = POR_CHECKOUT[a.dataset.checkout] || pagina;
-    const p = PRODUTOS[chave] || produtoDaPagina;
-    if (!p) return;
-    dl.push(Object.assign({ event: "initiate_checkout", event_id: eventId() }, dadosProduto(p)));
+  document.addEventListener("click", (eventoClique) => {
+    const link = eventoClique.target.closest && eventoClique.target.closest("[data-checkout]");
+    if (!link || !/kiwify/i.test(link.href || "")) return;
+
+    const chave = POR_CHECKOUT[link.dataset.checkout] || pagina;
+    const produto = PRODUTOS[chave] || produtoDaPagina;
+    if (!produto) return;
+
+    const evento = Object.assign({ event: "initiate_checkout", event_id: eventId() }, dadosProduto(produto));
+    dl.push(evento);
+
+    try {
+      void fetch("/api/checkout-event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "omit",
+        keepalive: true,
+        body: JSON.stringify({
+          event_id: evento.event_id,
+          product_id: produto.id,
+          value: evento.value,
+          page: location.pathname,
+        }),
+      }).catch(() => { /* o clique segue mesmo se o registro falhar */ });
+    } catch (_) { /* o clique nunca deve falhar por causa do rastreamento */ }
   }, true);
 
-  // 3) Lead: chamado por app.js depois que o e-mail da página de aulas ao vivo é validado
   window.mnTrack = {
     lead() {
       dl.push({ event: "generate_lead", event_id: eventId(), content_name: "Aulas ao vivo" });
