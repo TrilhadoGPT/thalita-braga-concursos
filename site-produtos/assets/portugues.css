@@ -57,3 +57,7 @@
 @media (prefers-reduced-motion: reduce) {
   .index li { animation: none; }
 }
+
+/* depoimentos: box escuro, letra clara em negrito */
+.depo-grid--dark .depo-card { background: var(--ink); border-color: var(--ink); }
+.depo-grid--dark .depo-card blockquote { color: var(--on-dark); font-weight: 700; }

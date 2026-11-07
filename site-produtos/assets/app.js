@@ -59,6 +59,12 @@ const CONFIG = {
     el.innerHTML = `<sup>R$</sup>${reais}<small>,${cent || "00"}</small>`;
   });
 
+  // preço em texto simples, para dentro de botões
+  d.querySelectorAll("[data-preco-btn]").forEach((el) => {
+    const v = CONFIG["PRECO_" + el.dataset.precoBtn.toUpperCase()];
+    if (v) el.textContent = "R$ " + v;
+  });
+
   // barra fixa mobile: aparece após o hero e some na oferta final
   const stick = d.querySelector(".stick");
   const hero = d.querySelector(".hero");

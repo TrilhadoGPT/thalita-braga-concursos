@@ -1,7 +1,7 @@
 /* Black Nutri: checkout e encerramento da oferta de hoje. */
 const CONFIG = {
   CHECKOUT_BLACK: "https://pay.kiwify.com.br/onjo2mg",// link da oferta Black Nutri na Kiwify (R$ 157,90). Vazio = modo rascunho
-  BLACK_FIM: "2026-11-07T02:59:59Z",  // 23:59:59 de 06/11/2026 em São Paulo (GMT-3). Troque a data se o prazo for outro. Só vale se o checkout sair do ar nesse horário
+  BLACK_FIM: "2026-11-09T02:59:59Z",  // 23:59:59 de 08/11/2026 em São Paulo (GMT-3). Troque a data se o prazo for outro. Só vale se o checkout sair do ar nesse horário
 };
 
 (() => {
@@ -17,17 +17,8 @@ const CONFIG = {
       a.href = CONFIG.CHECKOUT_BLACK; a.rel = "noopener";
     } else a.href = "#oferta";
   });
-  // texto da tarja muda sozinho conforme faltam dias (dia contado em São Paulo, GMT-3)
-  const brt = (t) => new Date(t - 3 * 3600e3);
-  const dia = (t) => Math.floor(brt(t).getTime() / 864e5);
-  const fimMs = Date.parse(CONFIG.BLACK_FIM);
-  const faltam = dia(fimMs) - dia(Date.now());
-  const dd = (n) => String(n).padStart(2, "0");
-  const prazoTxt = encerrou ? "Essa oferta foi encerrada."
-    : faltam <= 0 ? "OFERTA VÁLIDA SOMENTE HOJE ATÉ ÀS 23:59h"
-    : faltam === 1 ? "OFERTA VÁLIDA ATÉ AMANHÃ ÀS 23:59h"
-    : "OFERTA VÁLIDA ATÉ " + dd(brt(fimMs).getUTCDate()) + "/" + dd(brt(fimMs).getUTCMonth() + 1) + " ÀS 23:59h";
-  d.querySelectorAll("[data-prazo]").forEach((el) => { el.textContent = prazoTxt; });
+  // tarja: enquanto a oferta está aberta vale o texto do HTML; depois do prazo troca por aviso de encerrada
+  if (encerrou) d.querySelectorAll("[data-prazo]").forEach((el) => { el.textContent = "Essa oferta foi encerrada."; });
 
   // barra fixa mobile: aparece depois do hero e some na oferta final
   const stick = d.querySelector(".stick"), hero = d.querySelector(".hero"), fim = d.querySelector("#oferta");
