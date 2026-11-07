@@ -19,6 +19,14 @@
 
   const pagina = location.pathname.replace(/\/+$/, "").split("/").pop().replace(/\.html$/, "");
   const eventId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  const UTM_FIELDS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id"];
+
+  const cookieValue = (name) => {
+    const cookie = document.cookie.split(";").map((part) => part.trim()).find((part) => part.startsWith(name + "="));
+    if (!cookie) return null;
+    const value = cookie.slice(name.length + 1);
+    try { return decodeURIComponent(value); } catch (_) { return value; }
+  };
 
   const valorDe = (produto) => {
     try {
@@ -54,6 +62,8 @@
 
     const evento = Object.assign({ event: "initiate_checkout", event_id: eventId() }, dadosProduto(produto));
     dl.push(evento);
+    const params = new URLSearchParams(location.search || "");
+    const utms = Object.fromEntries(UTM_FIELDS.map((field) => [field, params.get(field)]));
 
     try {
       void fetch("/api/checkout-event", {
@@ -66,6 +76,15 @@
           product_id: produto.id,
           value: evento.value,
           page: location.pathname,
+          currency: evento.currency,
+          fbp: cookieValue("_fbp"),
+          fbc: cookieValue("_fbc"),
+          utm_source: utms.utm_source,
+          utm_medium: utms.utm_medium,
+          utm_campaign: utms.utm_campaign,
+          utm_term: utms.utm_term,
+          utm_content: utms.utm_content,
+          utm_id: utms.utm_id,
         }),
       }).catch(() => { /* o clique segue mesmo se o registro falhar */ });
     } catch (_) { /* o clique nunca deve falhar por causa do rastreamento */ }
