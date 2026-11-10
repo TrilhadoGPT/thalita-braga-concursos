@@ -35,4 +35,5 @@
 - [x] Commit `6f03808` enviado isoladamente à `master`; deploy de produção Vercel `READY`.
 - [x] Conferir rota pública e assets via HTTPS (HTTP 200), método GET no endpoint (405), `noindex` e ausência da senha/destino bônus no HTML publicado.
 - [x] Testar endpoint de produção com senha incorreta/correta e UTMs sintéticos: 401/200, UTMs preservados; resposta foi inspecionada sem seguir o redirecionamento nem abrir o Drive.
+- [x] Substituir o monograma `TB` pela foto de perfil `assets/thalita-avatar.png` usada na homepage.
 - [ ] Confirmar que as permissões da pasta bônus no Google Drive correspondem ao nível de privacidade desejado.

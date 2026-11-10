@@ -4,6 +4,7 @@
 - A rota foi criada em `site-produtos/material/aula-09-nov-26/`, porque a raiz Vercel do projeto é `site-produtos/`.
 - A audiência de alunos/participantes que receberam o link foi inferida a partir do pedido; a página foi marcada `noindex,nofollow,noarchive`.
 - Mantida a identidade já usada em `assets/base.css`, com o nome solicitado `Thalita Braga Concursos` e o GTM `GTM-WM3X2795` no `<head>` e logo após abrir `<body>`.
+- A marca da página usa a mesma foto de perfil `assets/thalita-avatar.png` da homepage, em recorte circular no lugar do monograma `TB`.
 - Material abre o Google Drive diretamente. Bônus mostra a senha em formulário; o endpoint `api/material-aula-09-nov-26` valida no servidor e só responde com o destino após acerto.
 - Variáveis Vercel exclusivas do fluxo: `MATERIAL_AULA_09_NOV_26_PASSWORD` e `MATERIAL_AULA_09_NOV_26_REDIRECT_URL`. A senha não aparece no HTML, JS, endpoint ou memória; a URL de bônus é injetada pela configuração do servidor.
 - O endpoint restringe destino a HTTPS em `drive.google.com/drive/folders/`, não guarda cache e compara senha em tempo constante. Uma senha errada retorna apenas erro; interface pisca em vermelho e exibe “Senha incorreta”.

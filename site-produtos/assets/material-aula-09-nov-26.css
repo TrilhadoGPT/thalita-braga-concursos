@@ -9,7 +9,7 @@ body { min-height: 100vh; background: var(--ink); color: var(--on-dark); }
 .material-header { min-height: 88px; border-bottom: 1px solid rgb(255 255 255 / 14%); }
 .material-brand { display: inline-flex; align-items: center; gap: 12px; color: var(--on-dark); text-decoration: none; font-size: .92rem; letter-spacing: .015em; }
 .material-brand strong { font-weight: 700; }
-.brand-monogram { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgb(198 241 53 / 72%); border-radius: 50%; color: var(--material-accent); font: 700 .85rem/1 var(--display); letter-spacing: -.06em; }
+.material-avatar { display: block; width: 36px; height: 36px; flex: 0 0 36px; border: 1px solid var(--material-accent); border-radius: 50%; object-fit: cover; outline: 1px solid rgb(198 241 53 / 28%); outline-offset: 2px; }
 .header-note, .date-stamp { font: 700 .7rem/1 var(--body); letter-spacing: .15em; }
 .header-note { color: var(--on-dark-muted); }
 .material-content { width: min(100%, 640px); margin: auto; padding-block: clamp(64px, 12vh, 124px); }
