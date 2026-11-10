@@ -32,6 +32,7 @@
 - [x] Adicionar testes locais com configuração simulada; quatro casos da função passaram.
 - [x] Conferir visualmente desktop/mobile e o estado de senha incorreta usando mock local.
 - [x] Configurar as duas variáveis sensíveis na Vercel para Production e Preview.
-- [ ] Fazer commit/push isolado desta entrega e aguardar deploy de produção `READY`.
-- [ ] Conferir rota pública e estados de senha com a configuração de produção; sem criar lead ou enviar dados pessoais.
+- [x] Commit `6f03808` enviado isoladamente à `master`; deploy de produção Vercel `READY`.
+- [x] Conferir rota pública e assets via HTTPS (HTTP 200), método GET no endpoint (405), `noindex` e ausência da senha/destino bônus no HTML publicado.
+- [ ] Fazer teste controlado do endpoint em produção para senha incorreta/correta; os estados foram cobertos com mocks locais, sem acessar a pasta Drive.
 - [ ] Confirmar que as permissões da pasta bônus no Google Drive correspondem ao nível de privacidade desejado.

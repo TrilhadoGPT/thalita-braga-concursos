@@ -10,7 +10,9 @@
 - Os cinco UTMs são mantidos ao abrir as duas pastas. Nenhum dado de senha ou identificador pessoal é enviado ao GTM.
 - Testes unitários com mocks: 4/4 passaram para senha correta/incorreta, método inválido e configuração/destino inválido. A apresentação foi conferida visualmente em desktop e mobile; o erro foi simulado.
 - GTM está instalado no código, mas não confirma que tags tenham disparado no Google/Meta; nenhum gatilho específico da campanha foi fornecido. As permissões reais do conteúdo são controladas pelo Google Drive; a página apenas controla a apresentação do link de bônus.
-- As variáveis foram cadastradas como sensíveis em Production e Preview. Git push e deploy ainda pendentes.
+- As variáveis foram cadastradas como sensíveis em Production e Preview. Commit `6f03808` enviado à `master`; deploy `dpl_8XsSZWs6Lua4NnYHiHXb2tj4gGf3` ficou `READY`.
+- Smoke check público: a rota e os dois assets retornaram HTTP 200; GET no endpoint retorna 405. O HTML publicado não expõe a senha nem a URL da pasta bônus.
+- O fluxo da senha foi testado com mocks locais, sem enviar a senha real ao endpoint de produção nem abrir a pasta do Drive.
 
 ## 2026-10-28 — estrutura inicial e publicação
 - Criado um site estático independente, sem dependências de build; adequado ao deploy direto na Vercel.
