@@ -1,5 +1,17 @@
 # Insights acumulados
 
+## 2026-11-10 — fluxo de material da aula de 09/11/26
+- A rota foi criada em `site-produtos/material/aula-09-nov-26/`, porque a raiz Vercel do projeto é `site-produtos/`.
+- A audiência de alunos/participantes que receberam o link foi inferida a partir do pedido; a página foi marcada `noindex,nofollow,noarchive`.
+- Mantida a identidade já usada em `assets/base.css`, com o nome solicitado `Thalita Braga Concursos` e o GTM `GTM-WM3X2795` no `<head>` e logo após abrir `<body>`.
+- Material abre o Google Drive diretamente. Bônus mostra a senha em formulário; o endpoint `api/material-aula-09-nov-26` valida no servidor e só responde com o destino após acerto.
+- Variáveis Vercel exclusivas do fluxo: `MATERIAL_AULA_09_NOV_26_PASSWORD` e `MATERIAL_AULA_09_NOV_26_REDIRECT_URL`. A senha não aparece no HTML, JS, endpoint ou memória; a URL de bônus é injetada pela configuração do servidor.
+- O endpoint restringe destino a HTTPS em `drive.google.com/drive/folders/`, não guarda cache e compara senha em tempo constante. Uma senha errada retorna apenas erro; interface pisca em vermelho e exibe “Senha incorreta”.
+- Os cinco UTMs são mantidos ao abrir as duas pastas. Nenhum dado de senha ou identificador pessoal é enviado ao GTM.
+- Testes unitários com mocks: 4/4 passaram para senha correta/incorreta, método inválido e configuração/destino inválido. A apresentação foi conferida visualmente em desktop e mobile; o erro foi simulado.
+- GTM está instalado no código, mas não confirma que tags tenham disparado no Google/Meta; nenhum gatilho específico da campanha foi fornecido. As permissões reais do conteúdo são controladas pelo Google Drive; a página apenas controla a apresentação do link de bônus.
+- As variáveis foram cadastradas como sensíveis em Production e Preview. Git push e deploy ainda pendentes.
+
 ## 2026-10-28 — estrutura inicial e publicação
 - Criado um site estático independente, sem dependências de build; adequado ao deploy direto na Vercel.
 - Direção visual editorial em verde profundo, creme e terracota, com layout responsivo e CTA de contato.
