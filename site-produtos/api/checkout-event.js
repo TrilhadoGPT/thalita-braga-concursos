@@ -19,6 +19,7 @@ const PRODUCTS = Object.freeze({
   nutriexpress: { name: "NutriExpress", page: "/nutriexpress" },
   "sus-descomplicado": { name: "SUS Descomplicado", page: "/sus-descomplicado" },
   "portugues-concursos": { name: "Português para concursos", page: "/portugues" },
+  "virada-nutri": { name: "Virada da Nutri", page: "/virada-da-nutri" },
 });
 
 function createCheckoutEventHandler(dependencies = {}) {

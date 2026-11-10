@@ -8,6 +8,8 @@
     nutriexpress: { id: "nutriexpress", nome: "NutriExpress", chave: "NUTRIEXPRESS", valor: 97.9 },
     "sus-descomplicado": { id: "sus-descomplicado", nome: "SUS Descomplicado", chave: "SUS", valor: 37.9 },
     portugues: { id: "portugues-concursos", nome: "Português para concursos", chave: "PORTUGUES", valor: 29.9 },
+    "virada-da-nutri": { id: "virada-nutri", nome: "Virada da Nutri", chave: "VIRADA", valor: 37 },
+    "virada-da-nutri-2": { id: "virada-nutri", nome: "Virada da Nutri", chave: "VIRADA", valor: 37 },
   };
   const POR_CHECKOUT = {
     sus: "sus-descomplicado",
@@ -15,6 +17,7 @@
     transpetro: "transpetro",
     black: "black",
     portugues: "portugues",
+    virada: "virada-da-nutri",
   };
 
   const pagina = location.pathname.replace(/\/+$/, "").split("/").pop().replace(/\.html$/, "");

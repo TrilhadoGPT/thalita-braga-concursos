@@ -23,7 +23,22 @@ const CONFIG = {
   CHECKOUT_COMBO: "https://pay.kiwify.com.br/2BpeYjJ", // oferta do combo na Kiwify (R$ 97,00)
   PRECO_COMBO: "97,00",
   COMBO_FIM: "2026-10-30T15:00:00Z", // 12:00 de 30/10/2026 em São Paulo (GMT-3). Só vale se o checkout sair do ar nesse horário
+
+  // Virada da Nutri (02 e 03/12, 19h às 22h): três lotes, horário de São Paulo (GMT-3).
+  // O preço do checkout na Kiwify precisa virar nas mesmas datas. O último "fim" encerra as inscrições.
+  CHECKOUT_VIRADA: "https://pay.kiwify.com.br/yq6L8Al",
+  LOTES_VIRADA: [
+    { n: 1, fim: "2026-11-16T23:59:59-03:00", preco: "37,00", rotulo: "16/11" },
+    { n: 2, fim: "2026-11-23T23:59:59-03:00", preco: "47,00", rotulo: "23/11" },
+    { n: 3, fim: "2026-12-02T15:00:00-03:00", preco: "57,00", rotulo: "02/12, às 15h" },
+  ],
 };
+
+// preço do lote em vigor (usado pelo botão, pelo bloco de preço e pelo Pixel)
+CONFIG.PRECO_VIRADA = (() => {
+  const l = CONFIG.LOTES_VIRADA.find((x) => Date.now() < Date.parse(x.fim)) || CONFIG.LOTES_VIRADA[CONFIG.LOTES_VIRADA.length - 1];
+  return l.preco;
+})();
 
 (() => {
   const d = document;
