@@ -13,6 +13,25 @@ function sanitizeUtm(value) {
   return clean || null;
 }
 
+// Classe do aparelho e do app de origem, deduzidas do cabeçalho do navegador no servidor.
+// Só a classe é repassada (nunca o texto bruto do navegador). Os nomes do aparelho seguem os do Meta
+// (impression_device) para dar para comparar com o Gerenciador de Anúncios.
+function classifyDevice(userAgent) {
+  if (typeof userAgent !== "string" || !userAgent) return null;
+  if (/iPhone|iPod/i.test(userAgent)) return "iphone";
+  if (/iPad/i.test(userAgent)) return "ipad";
+  if (/Android/i.test(userAgent)) return /Mobile/i.test(userAgent) ? "android_smartphone" : "android_tablet";
+  if (/Windows|Macintosh|X11|Linux|CrOS/i.test(userAgent)) return "desktop";
+  return "outro";
+}
+
+function classifyApp(userAgent) {
+  if (typeof userAgent !== "string" || !userAgent) return null;
+  if (/Instagram/i.test(userAgent)) return "instagram";
+  if (/FBAN|FBAV|FB_IAB/i.test(userAgent)) return "facebook";
+  return "navegador";
+}
+
 const PRODUCTS = Object.freeze({
   "black-nutri": { name: "Black Nutri", page: "/black" },
   "transpetro-nutri": { name: "Transpetro Nutri", page: "/transpetro" },
@@ -84,6 +103,8 @@ function createCheckoutEventHandler(dependencies = {}) {
       currency: "BRL",
       fbp: sanitizeCookie(body.fbp),
       fbc: sanitizeCookie(body.fbc),
+      device: classifyDevice(request.headers && request.headers["user-agent"]),
+      app: classifyApp(request.headers && request.headers["user-agent"]),
       timestamptz: now().toISOString(),
     };
     for (const field of UTM_FIELDS) event[field] = sanitizeUtm(body[field]);
