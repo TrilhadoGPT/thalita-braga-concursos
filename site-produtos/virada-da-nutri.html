@@ -2,10 +2,15 @@
 <html lang="pt-BR">
 <head>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+<script>
+/* GTM carregado logo depois da página (evento load) para não competir com a imagem principal.
+   O dataLayer já existe desde o início, então os eventos do tracking.js ficam na fila e nada se perde. */
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
+var go=function(){if(go.n)return;go.n=1;var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);};
+if(d.readyState==='complete')go();else{w.addEventListener('load',function(){setTimeout(go,0)});setTimeout(go,4000);}
 })(window,document,'script','dataLayer','GTM-WM3X2795');</script>
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
@@ -18,9 +23,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image" content="https://web.thalitabragaconcursos.com/assets/virada-hero.webp">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f6f7f2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- fontes hospedadas no próprio site (sem Google Fonts: tira 2 conexões e uma folha de estilo que bloqueava a renderização) -->
+<link rel="preload" href="assets/fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/virada-hero-800.webp" imagesrcset="assets/virada-hero-640.webp 640w, assets/virada-hero-800.webp 800w, assets/virada-hero.webp 1122w" imagesizes="(min-width: 880px) 470px, 92vw" fetchpriority="high">
+<style>
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/barlow-condensed-600.woff2) format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/barlow-condensed-700.woff2) format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/barlow-condensed-800.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/inter-var.woff2) format("woff2")}
+</style>
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="assets/virada.css">
 </head>
@@ -67,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="v-photo">
         <figure>
-          <img src="assets/virada-hero-640.webp" srcset="assets/virada-hero-640.webp 640w, assets/virada-hero.webp 1122w" sizes="(min-width: 880px) 470px, 92vw" width="1122" height="1402" alt="Nutricionista estudando à noite, com caderno, marca-texto e notebook sobre a mesa de casa" fetchpriority="high">
+          <img src="assets/virada-hero-640.webp" srcset="assets/virada-hero-640.webp 640w, assets/virada-hero-800.webp 800w, assets/virada-hero.webp 1122w" sizes="(min-width: 880px) 470px, 92vw" width="1122" height="1402" alt="Nutricionista estudando à noite, com caderno, marca-texto e notebook sobre a mesa de casa" fetchpriority="high">
         </figure>
         <div class="v-ticket" data-v-prazo><span data-count-label>O Lote 1 termina em</span><b data-countdown>--</b></div>
       </div>

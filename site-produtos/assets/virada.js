@@ -104,7 +104,7 @@
     const pedir = () => { if (!ocupado) { ocupado = true; requestAnimationFrame(medir); } };
     addEventListener("scroll", pedir, { passive: true });
     addEventListener("resize", pedir);
-    medir();
+    requestAnimationFrame(medir); /* 1ª medição fora do carregamento: evita reflow forçado */
   }
 
   /* ---------- marca-texto da primeira dobra ---------- */

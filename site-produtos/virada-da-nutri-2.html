@@ -2,10 +2,14 @@
 <html lang="pt-BR">
 <head>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+<script>
+/* GTM carregado logo depois da página (evento load); o dataLayer existe desde o início, então nenhum evento se perde. */
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});
+var go=function(){if(go.n)return;go.n=1;var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);};
+if(d.readyState==='complete')go();else{w.addEventListener('load',function(){setTimeout(go,0)});setTimeout(go,4000);}
 })(window,document,'script','dataLayer','GTM-WM3X2795');</script>
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
@@ -18,9 +22,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:image" content="https://web.thalitabragaconcursos.com/assets/virada-hero.webp">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#04130d">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- fonte hospedada no próprio site (sem Google Fonts, que bloqueava a renderização) -->
+<link rel="preload" href="assets/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/virada-thalita-640.webp" imagesrcset="assets/virada-thalita-640.webp 640w, assets/virada-thalita.webp 1102w" imagesizes="(min-width: 900px) 520px, 80vw" fetchpriority="high">
+<style>@font-face{font-family:"Montserrat";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/montserrat-var.woff2) format("woff2")}</style>
 <link rel="stylesheet" href="assets/virada-b.css">
 </head>
 <body>
@@ -51,7 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap b-hero-grid">
     <div class="b-hero-copy">
       <p class="label rise" style="--i:0">Virada da Nutri</p>
-      <h1 class="rise" style="--i:1">O ano da mudança começa <span class="gold">antes de janeiro</span>.</h1>
+      <h1>O ano da mudança começa <span class="gold">antes de janeiro</span>.</h1>
       <p class="p1 rise" style="--i:2">Para nutricionistas que querem estabilidade, salário e qualidade de vida com um concurso público.</p>
       <p class="p2 rise" style="--i:3">Em duas noites ao vivo, você sai sabendo o que estudar primeiro, como encaixar o estudo na rotina, como manter o foco e como as bancas cobram as questões.</p>
       <p class="b-meta rise" style="--i:4">
