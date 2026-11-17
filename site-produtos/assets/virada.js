@@ -63,6 +63,7 @@
       a.innerHTML = "Inscrições encerradas";
     });
     texto("[data-lote-linha]", "Inscrições encerradas");
+    texto("[data-prazo-linha]", "Inscrições encerradas");
   }
 
   /* ---------- luz que segue o cursor nas seções de fundo claro ---------- */
