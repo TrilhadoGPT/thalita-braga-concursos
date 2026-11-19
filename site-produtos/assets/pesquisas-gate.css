@@ -1,0 +1,53 @@
+/* Pop-up de senha das pesquisas: mesmas cores e tipografia dos painéis */
+:root {
+  color-scheme: light;
+  --page: #f4f4f1; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --line: #e1e0d9; --ring: rgba(11, 11, 11, .10); --accent: #2a78d6; --accent-ink: #ffffff; --danger: #c93b2d;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+    --line: #2c2c2a; --ring: rgba(255, 255, 255, .10); --accent: #3987e5; --accent-ink: #ffffff; --danger: #ef7a6c;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--page); }
+body { margin: 0; min-height: 100vh; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--page); }
+
+.fundo { max-width: 1120px; margin: 0 auto; padding: 36px 20px; filter: blur(6px); opacity: .55; pointer-events: none; user-select: none; }
+.fundo h1 { font-size: 26px; letter-spacing: -.015em; margin: 0 0 4px; }
+.fundo p { margin: 0 0 26px; color: var(--ink2); max-width: 62ch; }
+.fundo .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.fundo .grade i { display: block; height: 170px; border-radius: 16px; background: var(--surface); border: 1px solid var(--ring); }
+
+.veu { position: fixed; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(11, 11, 11, .38); }
+@media (prefers-color-scheme: dark) { .veu { background: rgba(0, 0, 0, .55); } }
+.modal {
+  width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--ring); border-radius: 16px;
+  padding: 26px 24px 22px; box-shadow: 0 18px 48px rgba(0, 0, 0, .22);
+}
+.modal .cadeado { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); margin-bottom: 14px; }
+.modal .cadeado svg { width: 22px; height: 22px; }
+.modal h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -.01em; line-height: 1.25; }
+.modal p { margin: 0 0 18px; color: var(--ink2); font-size: 13.5px; }
+.modal label { display: block; font-size: 12px; font-weight: 650; letter-spacing: .02em; text-transform: uppercase; color: var(--ink2); margin-bottom: 6px; }
+.modal input {
+  width: 100%; min-height: 50px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--page); color: var(--ink);
+  font: 600 20px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: .12em; transition: border-color .15s, box-shadow .15s;
+}
+.modal input:hover { border-color: var(--accent); }
+.modal input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 24%, transparent); }
+.modal input[aria-invalid="true"] { border-color: var(--danger); box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 16%, transparent); }
+.erro { min-height: 1.3em; margin-top: 6px; color: var(--danger); font-size: 13px; font-weight: 500; }
+.modal button {
+  width: 100%; min-height: 48px; margin-top: 8px; border: 0; border-radius: 12px; cursor: pointer; background: var(--accent); color: var(--accent-ink);
+  font: 650 15px/1 system-ui, -apple-system, "Segoe UI", sans-serif; transition: transform .15s ease, box-shadow .15s ease, opacity .15s;
+}
+.modal button:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(42, 120, 214, .35); }
+.modal button:active { transform: translateY(0); }
+.modal button[disabled] { opacity: .6; cursor: progress; transform: none; box-shadow: none; }
+.modal button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.carregando { position: fixed; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .modal button, .modal input { transition: none; } }
