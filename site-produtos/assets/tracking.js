@@ -10,6 +10,7 @@
     portugues: { id: "portugues-concursos", nome: "Português para concursos", chave: "PORTUGUES", valor: 29.9 },
     "virada-da-nutri": { id: "virada-nutri", nome: "Virada da Nutri", chave: "VIRADA", valor: 37 },
     "virada-da-nutri-2": { id: "virada-nutri", nome: "Virada da Nutri", chave: "VIRADA", valor: 37 },
+    "gravacao-virada-da-nutri": { id: "gravacao-virada-nutri", nome: "Gravação da Virada da Nutri", chave: "GRAVACAO", valor: 97 },
   };
   const POR_CHECKOUT = {
     sus: "sus-descomplicado",
@@ -18,6 +19,7 @@
     black: "black",
     portugues: "portugues",
     virada: "virada-da-nutri",
+    gravacao: "gravacao-virada-da-nutri",
   };
 
   const pagina = location.pathname.replace(/\/+$/, "").split("/").pop().replace(/\.html$/, "");

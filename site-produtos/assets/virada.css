@@ -72,7 +72,9 @@ mark.mk {
 .v-depo blockquote { margin: 0; }
 .vp-next { font-size: 0.92rem; color: var(--muted); }
 .vp-next b { color: var(--ink); font-weight: 700; }
-.v-lote { margin-top: 12px; font-size: 0.9rem; color: var(--muted); }
+/* tarja de urgência no topo (some depois do fim das inscrições, via data-v-prazo no virada.js) */
+.v-alert { position: sticky; top: 0; z-index: 40; background: #c62828; color: #fff; text-align: center; padding: 10px var(--gutter); font: 800 clamp(1rem, 3.4vw, 1.2rem)/1.15 var(--display); letter-spacing: 0.08em; text-transform: uppercase; }
+.v-alert[hidden] { display: none; }
 .v-price--dark .vp-next { color: var(--on-dark-muted); }
 .v-price--dark .vp-next b, .v-price--dark .vp-now b { color: var(--on-dark); }
 .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1.5px var(--green); position: relative; flex: none; display: inline-block; }
@@ -188,8 +190,6 @@ mark.mk {
 .bonus-box svg { width: 40px; height: 40px; color: var(--green); grid-row: span 2; }
 .bonus-box b { font: 800 1.45rem/1 var(--display); text-transform: uppercase; }
 .bonus-box span { color: var(--muted); font-size: 0.92rem; }
-.note-off { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; padding: 4px 4px 0; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
-.note-off svg { width: 20px; height: 20px; margin-top: 2px; color: var(--muted); }
 @media (min-width: 900px) { .d6 { grid-template-columns: 1.1fr 0.9fr; gap: 28px; } .side { position: sticky; top: 24px; } }
 
 /* ---------- dobra 7: para quem ---------- */
@@ -249,7 +249,6 @@ mark.mk {
   .stick { display: grid; gap: 6px; inset: auto 24px 24px auto; width: auto; transform: translateY(calc(100% + 48px)); padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 18px; box-shadow: 0 26px 40px -20px rgba(0, 0, 0, 0.6); }
   .stick .btn { width: auto; min-height: 48px; padding: 10px 22px; font-size: 1.15rem; }
 }
-.stick small { text-align: center; color: var(--on-dark-muted); font-size: 0.78rem; }
 
 /* ---------- faixa de inscrição no meio ---------- */
 .v-band { padding-block: clamp(40px, 7vw, 72px); }

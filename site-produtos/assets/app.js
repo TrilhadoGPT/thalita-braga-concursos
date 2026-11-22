@@ -27,6 +27,8 @@ const CONFIG = {
   // Virada da Nutri (02 e 03/12, 19h às 22h): três lotes, horário de São Paulo (GMT-3).
   // O preço do checkout na Kiwify precisa virar nas mesmas datas. O último "fim" encerra as inscrições.
   CHECKOUT_VIRADA: "https://pay.kiwify.com.br/yq6L8Al",
+  CHECKOUT_GRAVACAO: "https://pay.kiwify.com.br/nIma9HJ", // gravação da Virada da Nutri (R$ 97, 7 dias), página /gravacao-virada-da-nutri
+  PRECO_GRAVACAO: "97,00",
   LOTES_VIRADA: [
     { n: 1, fim: "2026-11-16T23:59:59-03:00", preco: "37,00", rotulo: "16/11" },
     { n: 2, fim: "2026-11-23T23:59:59-03:00", preco: "47,00", rotulo: "23/11" },

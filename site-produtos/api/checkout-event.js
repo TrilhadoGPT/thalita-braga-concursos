@@ -39,6 +39,7 @@ const PRODUCTS = Object.freeze({
   "sus-descomplicado": { name: "SUS Descomplicado", page: "/sus-descomplicado" },
   "portugues-concursos": { name: "Português para concursos", page: "/portugues" },
   "virada-nutri": { name: "Virada da Nutri", page: "/virada-da-nutri" },
+  "gravacao-virada-nutri": { name: "Gravação da Virada da Nutri", page: "/gravacao-virada-da-nutri" },
 });
 
 function createCheckoutEventHandler(dependencies = {}) {
