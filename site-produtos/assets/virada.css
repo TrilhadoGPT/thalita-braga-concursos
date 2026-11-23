@@ -52,7 +52,7 @@ mark.mk {
 .v-mark { display: inline-block; background: var(--lime); color: var(--ink); border-radius: 8px; padding: 9px 14px 8px; font: 800 clamp(1.25rem, 2.8vw, 1.7rem)/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
 .v-hero h1.h-display { margin-top: 0; }
 .v-hero .hero-copy { padding-bottom: 0; }
-.v-hero h1.h-display { font-size: clamp(2.7rem, 8.6vw, 4.9rem); }
+.v-hero h1.h-display { font-size: clamp(2.2rem, 7.4vw, 3.7rem); }
 .v-hero h1 .y { color: var(--green); }
 .v-hero .lead { color: var(--muted); margin-top: 22px; }
 .v-hero .hero-note { color: var(--muted); margin-top: 0; }

@@ -39,10 +39,9 @@ a { color: inherit; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .gold { color: var(--gold); }
 
-/* ---------- barra do topo: preço e escassez ---------- */
-.topbar { background: var(--gold); color: var(--ink-dark); min-height: 45px; padding: 10px var(--gutter); display: grid; place-items: center; text-align: center; font: 800 0.7rem/1.4 var(--f); letter-spacing: 0.12em; text-transform: uppercase; }
-.topbar b { font-weight: 800; }
-.topbar .sep { opacity: 0.5; padding-inline: 0.6em; }
+/* ---------- tarja fixa de urgência (laranja; some depois do fim das inscrições, via data-v-prazo no virada.js) ---------- */
+.b-alert { position: sticky; top: 0; z-index: 40; background: #ff8a00; color: #1a0f00; min-height: 40px; padding: 10px var(--gutter); display: grid; place-items: center; text-align: center; font: 800 0.85rem/1.2 var(--f); letter-spacing: 0.18em; text-transform: uppercase; }
+.b-alert[hidden] { display: none; }
 
 /* ---------- seções ---------- */
 .sec-dark {
@@ -191,8 +190,6 @@ a { color: inherit; }
 .pr { display: grid; gap: 2px; }
 .pr b { font: 800 2.7rem/0.95 var(--f); letter-spacing: -0.04em; color: var(--gold); font-variant-numeric: tabular-nums; }
 .pr > span { font-size: 0.8rem; font-weight: 600; }
-.pr .nx { font-size: 0.8rem; color: var(--on-dark-muted); }
-.pr .nx b { font: 700 0.8rem/1 var(--f); letter-spacing: 0; color: var(--on-dark); }
 
 /* ---------- dobra 7: para quem é ---------- */
 .who { display: grid; gap: 16px; }
@@ -202,17 +199,6 @@ a { color: inherit; }
 .who li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding-block: 8px; align-items: start; color: #251e19; }
 .who svg { width: 22px; height: 22px; margin-top: 1px; }
 @media (min-width: 760px) { .who { grid-template-columns: 1.1fr 0.9fr; gap: 20px; } }
-
-/* ---------- dobra 8: lotes ---------- */
-.lots { display: grid; gap: 14px; margin-top: clamp(28px, 4vw, 44px); }
-.lot .nm { font: 700 0.74rem/1 var(--f); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
-.lot .until { margin-top: 12px; font: 700 1.5rem/1.2 var(--f); letter-spacing: -0.03em; }
-.lot .st { margin-top: 12px; font-size: 0.8rem; color: var(--on-dark-muted); }
-.lot.is-now { border-color: var(--gold); }
-.lot.is-now .st { color: var(--gold); font-weight: 700; }
-.lot.is-past { opacity: 0.5; }
-.lot.is-past .until { text-decoration: line-through; text-decoration-thickness: 2px; }
-@media (min-width: 760px) { .lots { grid-template-columns: repeat(3, 1fr); } }
 
 /* ---------- dobras 9 e 12: oferta ---------- */
 .offer { display: grid; gap: 32px; align-items: start; }
@@ -225,14 +211,6 @@ a { color: inherit; }
 .price small { font-size: 0.42em; letter-spacing: -0.02em; }
 .count { font-size: 0.85rem; color: var(--on-dark-muted); }
 .count b { color: var(--on-dark); font-weight: 700; font-variant-numeric: tabular-nums; }
-.lotes { margin-top: 16px; border-top: 1px solid #f4eee422; }
-.lotes li { display: grid; grid-template-columns: 4.4rem 1fr auto; gap: 8px; align-items: center; padding: 11px 10px; border-bottom: 1px solid #f4eee422; font-size: 0.86rem; }
-.lotes .ln { font-weight: 700; }
-.lotes .ld { color: var(--on-dark-muted); }
-.lotes .lp { font-weight: 700; font-variant-numeric: tabular-nums; }
-.lotes li.is-now { background: #f3cb8226; border-radius: 8px; border-bottom-color: transparent; }
-.lotes li.is-past { opacity: 0.45; }
-.lotes li.is-past .lp { text-decoration: line-through; }
 .pcard .btn { margin-top: 20px; }
 .pcard .safe { margin-top: 14px; font-size: 0.8rem; color: var(--on-dark-muted); display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; }
 .pcard .safe svg { width: 18px; height: 18px; color: var(--gold); margin-top: 1px; }
