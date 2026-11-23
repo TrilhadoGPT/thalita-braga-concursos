@@ -107,7 +107,6 @@ a { color: inherit; }
 .b-photo .tag b { display: block; font-size: 0.98rem; font-weight: 800; letter-spacing: -0.01em; }
 .b-offer { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
 .b-offer .btn { margin: 0; }
-.b-lote { margin-top: 12px; font-size: 0.78rem; color: var(--on-dark-muted); }
 @media (min-width: 900px) {
   .b-hero { padding-top: 26px; }
   /* o hero vai até a borda direita da tela: a foto fica centrada entre o fim do texto e a borda */
@@ -176,8 +175,6 @@ a { color: inherit; }
 .bonus { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: center; }
 .bonus svg { width: 34px; height: 34px; color: var(--gold); grid-row: span 2; }
 .bonus b { font-weight: 700; }
-.note-off { margin-top: 12px; font-size: 0.82rem; color: #4d4338; display: grid; grid-template-columns: 20px 1fr; gap: 10px; }
-.note-off svg { width: 18px; height: 18px; margin-top: 2px; }
 @media (min-width: 900px) { .d6 { grid-template-columns: 1.1fr 0.9fr; gap: 56px; } }
 
 /* ---------- faixa de inscrição (meio) ---------- */
@@ -260,7 +257,6 @@ a { color: inherit; }
 }
 .stick.on { transform: none; }
 .stick .btn { width: 100%; padding: 16px 20px; }
-.stick small { text-align: center; color: var(--on-dark-muted); font-size: 0.72rem; }
 @media (min-width: 880px) {
   .stick { inset: auto 24px 24px auto; width: auto; transform: translateY(calc(100% + 48px)); border: 1px solid #be772366; border-radius: 12px; padding: 12px 14px; box-shadow: 0 26px 40px -20px rgba(0, 0, 0, 0.7); }
   .stick .btn { width: auto; padding: 14px 22px; }
