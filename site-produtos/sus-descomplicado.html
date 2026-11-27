@@ -44,6 +44,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .shelf li::before { content: none; }
   .shelf-cap { margin-top: 14px; font-size: 0.85rem; color: var(--on-dark-muted); }
   .sec--green mark.hl { color: var(--amber); }
+
+  /* hero: valor logo acima do botão */
+  .hero-price { display: flex; align-items: baseline; gap: 10px; margin-top: 20px; color: var(--on-dark-muted); font-size: 0.95rem; }
+  .hero-price .price { margin: 0; color: var(--on-dark); font-size: 3rem; line-height: 1; }
+  .hero-copy .hero-price + .btn { margin-top: 12px; }
+
+  /* hero: o botão precisa aparecer na primeira tela; medidas acompanham a altura */
+  @media (max-width: 879px) {
+    .hero-price { margin-top: 12px; }
+    .hero-price .price { font-size: 2.6rem; }
+    .hero { padding-top: 16px; }
+    .hero .brandmark { margin-bottom: 16px; }
+    .hero h1.h-display { font-size: clamp(2.1rem, min(10.4vw, 6.4vh), 5.2rem); }
+    .hero-copy .lead { margin-top: 14px; font-size: 1rem; line-height: 1.5; }
+    .hero-copy .btn { margin-top: 18px; width: 100%; max-width: 460px; padding-inline: 12px; gap: 10px; font-size: clamp(1.1rem, 5.4vw, 1.35rem); }
+  }
+  @media (min-width: 880px) {
+    .hero { padding-top: clamp(16px, 3.5vh, 56px); }
+    .hero .brandmark { margin-bottom: clamp(14px, 3.5vh, 48px); }
+    .hero h1.h-display { font-size: clamp(2.6rem, min(5.4vw, 8.6vh), 5.2rem); }
+    .hero-copy .lead { margin-top: clamp(12px, 2.2vh, 20px); font-size: clamp(1rem, 2.3vh, 1.25rem); }
+    .hero-copy .btn { margin-top: clamp(16px, 3vh, 28px); }
+  }
 </style>
 </head>
 <body>
@@ -63,12 +86,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- DOBRA 1 — PROMESSA -->
 <header class="hero dark">
   <div class="wrap">
-    <div class="brandmark"><i style="background:var(--amber)"><svg><use href="#i-leaf"/></svg></i>Mentor Nutri</div>
+    <div class="brandmark"><img src="assets/mentor-nutri-logo.webp" alt="" width="240" height="240" style="width:44px;height:44px;border-radius:10px;flex:none">Mentor Nutri</div>
     <div class="hero-grid" style="align-items:center">
       <div class="hero-copy">
         <h1 class="h-display rise" style="--i:0">Estude a legislação do SUS <mark class="hl">sem decorar lei seca</mark>.</h1>
         <p class="lead rise" style="--i:1">O SUS Descomplicado reúne as normas oficiais, PDFs esquematizados com quadros e mapas mentais, questões comentadas e bônus de revisão. Tudo organizado conforme o edital.</p>
-        <a class="btn rise" style="--i:2" data-checkout="sus" href="#oferta">Quero o SUS Descomplicado <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p class="hero-price rise" style="--i:2"><span class="price" data-preco="sus"><sup>R$</sup>37<small>,90</small></span> <span>pagamento único</span></p>
+        <a class="btn" data-checkout="sus" href="#oferta">Quero o SUS Descomplicado <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <p class="hero-note rise" style="--i:3">8 normas oficiais · 35 PDFs · 370 páginas · garantia de 7 dias</p>
       </div>
       <div class="shelf rise" style="--i:2" aria-label="Normas incluídas na Biblioteca Inteligente">
@@ -297,9 +321,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <footer class="foot">
   <div class="wrap">
-    <div class="brandmark" style="color:var(--on-dark)"><i style="background:var(--amber)"><svg><use href="#i-leaf"/></svg></i>Mentor Nutri</div>
+    <div class="brandmark" style="color:var(--on-dark)"><img src="assets/mentor-nutri-logo.webp" alt="" width="240" height="240" loading="lazy" style="width:44px;height:44px;border-radius:10px;flex:none">Mentor Nutri</div>
     <p>Material independente de apoio aos estudos, sem vínculo com bancas organizadoras, órgãos ou empresas citados. Confira sempre a vigência das normas no seu edital. <a href="/">Ver todos os produtos</a></p>
-    <p class="ph" style="justify-items:start;text-align:left;margin-top:6px">COMPLETAR: razão social, CNPJ e contato</p>
   </div>
 </footer>
 
